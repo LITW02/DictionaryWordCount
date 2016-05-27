@@ -1,0 +1,32 @@
+﻿@model MvcApplication25.Models.IndexViewModel
+
+<div class="well">
+    <div class="row">
+        <form action="/home/index">
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="text" placeholder="Word Count Text" value="@Model.Text"/>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-success btn-block">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+@if (Model.WordCount != null)
+{
+    <div style="margin-top: 20px;">
+        <table class="table table-striped table-hover table-bordered">
+            <tr>
+                <th>Letter</th>
+                <th>Count</th>
+            </tr>
+            @foreach (KeyValuePair<char, int> kvp in Model.WordCount)
+            {
+                <tr>
+                    <td>@kvp.Key</td>
+                    <td>@kvp.Value</td>
+                </tr>
+            }
+        </table>
+    </div>
+}
